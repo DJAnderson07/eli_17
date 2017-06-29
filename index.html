@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to Data Visualization</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to Data Visualization">
+  <meta name="author" content="Daniel Anderson">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Introduction to Data Visualization</h1>
+    <h2>Some dos and don'ts&quot;</h2>
+    <p>Daniel Anderson<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+</style>
+
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
+
+<h2>Quick stats lesson (with pictures!)</h2>
+
+<ul>
+<li>Mean versus Median versus Mode</li>
+<li>Standard Deviation</li>
+<li>Correlation</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Mean versus median versus mode</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/normal_dist-1.png" alt="plot of chunk normal_dist"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Mean versus median versus mode</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/bimod-1.png" alt="plot of chunk bimod"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Standard deviation</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/sd_norm.png width = 1000 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Standard deviation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/sd_bimod-1.png" alt="plot of chunk sd_bimod"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Correlation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-7" style="background:;">
+  <article data-timings="">
+    <p><q> Above all else, show the data</p>
+
+<p><br>
+Edward Tufte</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Classical example: Anscombe&#39;s Quartet</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="left">plot</th>
+<th align="right">mean_x</th>
+<th align="right">mean_y</th>
+<th align="right">sd_x</th>
+<th align="right">sd_y</th>
+<th align="right">cor</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">9</td>
+<td align="right">7.500909</td>
+<td align="right">3.316625</td>
+<td align="right">2.031568</td>
+<td align="right">0.8164205</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">9</td>
+<td align="right">7.500909</td>
+<td align="right">3.316625</td>
+<td align="right">2.031657</td>
+<td align="right">0.8162365</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">9</td>
+<td align="right">7.500000</td>
+<td align="right">3.316625</td>
+<td align="right">2.030424</td>
+<td align="right">0.8162867</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">9</td>
+<td align="right">7.500909</td>
+<td align="right">3.316625</td>
+<td align="right">2.030578</td>
+<td align="right">0.8165214</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>In visual form</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/anscombe_stats-1.png" alt="plot of chunk anscombe_stats"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Better example</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="left">dataset</th>
+<th align="right">mean_x</th>
+<th align="right">mean_y</th>
+<th align="right">sd_x</th>
+<th align="right">sd_y</th>
+<th align="right">cor</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">away</td>
+<td align="right">54.26610</td>
+<td align="right">47.83472</td>
+<td align="right">16.76983</td>
+<td align="right">26.93974</td>
+<td align="right">-0.0641284</td>
+</tr>
+<tr>
+<td align="left">bullseye</td>
+<td align="right">54.26873</td>
+<td align="right">47.83082</td>
+<td align="right">16.76924</td>
+<td align="right">26.93573</td>
+<td align="right">-0.0685864</td>
+</tr>
+<tr>
+<td align="left">circle</td>
+<td align="right">54.26732</td>
+<td align="right">47.83772</td>
+<td align="right">16.76001</td>
+<td align="right">26.93004</td>
+<td align="right">-0.0683434</td>
+</tr>
+<tr>
+<td align="left">dino</td>
+<td align="right">54.26327</td>
+<td align="right">47.83225</td>
+<td align="right">16.76514</td>
+<td align="right">26.93540</td>
+<td align="right">-0.0644719</td>
+</tr>
+<tr>
+<td align="left">dots</td>
+<td align="right">54.26030</td>
+<td align="right">47.83983</td>
+<td align="right">16.76774</td>
+<td align="right">26.93019</td>
+<td align="right">-0.0603414</td>
+</tr>
+<tr>
+<td align="left">h_lines</td>
+<td align="right">54.26144</td>
+<td align="right">47.83025</td>
+<td align="right">16.76590</td>
+<td align="right">26.93988</td>
+<td align="right">-0.0617148</td>
+</tr>
+<tr>
+<td align="left">high_lines</td>
+<td align="right">54.26881</td>
+<td align="right">47.83545</td>
+<td align="right">16.76670</td>
+<td align="right">26.94000</td>
+<td align="right">-0.0685042</td>
+</tr>
+<tr>
+<td align="left">slant_down</td>
+<td align="right">54.26785</td>
+<td align="right">47.83590</td>
+<td align="right">16.76676</td>
+<td align="right">26.93610</td>
+<td align="right">-0.0689797</td>
+</tr>
+<tr>
+<td align="left">slant_up</td>
+<td align="right">54.26588</td>
+<td align="right">47.83150</td>
+<td align="right">16.76885</td>
+<td align="right">26.93861</td>
+<td align="right">-0.0686092</td>
+</tr>
+<tr>
+<td align="left">star</td>
+<td align="right">54.26734</td>
+<td align="right">47.83955</td>
+<td align="right">16.76896</td>
+<td align="right">26.93027</td>
+<td align="right">-0.0629611</td>
+</tr>
+<tr>
+<td align="left">v_lines</td>
+<td align="right">54.26993</td>
+<td align="right">47.83699</td>
+<td align="right">16.76996</td>
+<td align="right">26.93768</td>
+<td align="right">-0.0694456</td>
+</tr>
+<tr>
+<td align="left">wide_lines</td>
+<td align="right">54.26692</td>
+<td align="right">47.83160</td>
+<td align="right">16.77000</td>
+<td align="right">26.93790</td>
+<td align="right">-0.0665752</td>
+</tr>
+<tr>
+<td align="left">x_shape</td>
+<td align="right">54.26015</td>
+<td align="right">47.83972</td>
+<td align="right">16.76996</td>
+<td align="right">26.93000</td>
+<td align="right">-0.0655833</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Plot one of the datasets</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Plot another dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Plot all the datasets</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>In gif form</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif" alt="dino_gif"></p>
+
+<p>Matejka &amp; Fitzmaurice (2017). <em>Same stats, different graphs: Generating datasets with varied appearance and identical statistics through simulated annealing.</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-15" style="background:;">
+  <hgroup>
+    <h1>Some applied examples</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Hypothetical example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>School wants to try out a new reading intervention</li>
+<li>Work with researchers at the UO to design a study</li>
+<li>Kindergarten students who are behind their peers in literacy are selected</li>
+<li>Randomly assign half the students to the intervention, the rest continue with
+&quot;typical&quot; instruction</li>
+<li>Now the study is over - how do we tell if it worked? Visualize it! (and 
+other stuff too)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Barplots</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>(tried and true)</p>
+
+<p><img src="assets/fig/barplot-1.png" alt="plot of chunk barplot"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Boxplots</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>(tried and true)</p>
+
+<p><img src="assets/fig/boxplots-1.png" alt="plot of chunk boxplots"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Notched boxplots</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>(slightly better)</p>
+
+<p><img src="assets/fig/notched_boxplots-1.png" alt="plot of chunk notched_boxplots"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Stripcharts</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Show the data!</p>
+
+<p><img src="assets/fig/stripchart-1.png" alt="plot of chunk stripchart"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Jittered stripcharts</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Show the data!</p>
+
+<p><img src="assets/fig/jittered_stripchart-1.png" alt="plot of chunk jittered_stripchart"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Combine barplots and jittered stripcharts</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/barplot_stripchart-1.png" alt="plot of chunk barplot_stripchart"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Combine boxplots and jittered stripcharts</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/boxplot_jitter-1.png" alt="plot of chunk boxplot_jitter"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Best?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/broman_plot-1.png" alt="plot of chunk broman_plot"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Some things to avoid</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>3D plots</li>
+<li>Pie charts</li>
+<li>Dual axes</li>
+<li>Restricted axes</li>
+<li>Unnecessary frills (colors, etc)
+
+<ul>
+<li>Show the data as plainly as possible. Let the data speak!</li>
+</ul></li>
+</ul>
+
+<p>NOTE: The following 10 slides (and the previous plot) inspired/taken from Karl Broman&#39;s presentation on graphs (see <a href="https://www.biostat.wisc.edu/%7Ekbroman/presentations/graphs2017.pdf">here</a>)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/3d_bar.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/tube_bar.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/cone_bar.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/orbs.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/pie.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/exploded_pie.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/donut.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/area.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/double_terrain.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = assets/img/bad_data_vis/terrain.png width = 500 height = 500>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Some great examples: SEDA</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Sean Reardon: <a href="https://cepa.stanford.edu/seda/overview">https://cepa.stanford.edu/seda/overview</a></p>
+
+<div align = "center">
+<img src = assets/img/seda.png width = 800 height = 600>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Means by district</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/seda_means.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Average gains by district</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/seda_growth.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Mean scores and SES</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/seda_ses.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Mean scores and SES by Race/Ethniciy</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/seda_ses_race.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Other examples: Visualizing scale</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Space stuff: <a href="http://imgur.com/a/lGabv">http://imgur.com/a/lGabv</a>
+<br></li>
+<li>Time: <a href="https://www.businessinsider.com.au/animated-timeline-earth-history-2015-11">https://www.businessinsider.com.au/animated-timeline-earth-history-2015-11</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Some <em>ggplot</em> examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/mpgEx3-1.png" alt="plot of chunk mpgEx3"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Add an additional aesthetic</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/mpgEx4-1.png" alt="plot of chunk mpgEx4"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Add smooth line for each class</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Too busy</h1>
+
+<p><img src="assets/fig/mpgEx5b-1.png" alt="plot of chunk mpgEx5b"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>Remove SE</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/mpgEx6a-1.png" alt="plot of chunk mpgEx6a"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-46" style="background:;">
+  <hgroup>
+    <h1>Some things to avoid</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Truncated axes</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/bad_data_vis/truncated_axes.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:;">
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/bad_data_vis/truncated_axes2.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49" style="background:;">
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/bad_data_vis/truncated_dishonest.png width = 700 height = 650>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50" style="background:;">
+  <hgroup>
+    <h2>Dual axes</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/bad_data_vis/dual_axes.png width = 800 height = 500>
+</div>
+
+<p><a href="http://www.tylervigen.com/spurious-correlations">Proof</a> dual axes are bad. But, some <a href="https://stackoverflow.com/questions/3099219/plot-with-2-y-axes-one-y-axis-on-the-left-and-another-y-axis-on-the-right">lively</a> discussion. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-51" style="background:;">
+  <hgroup>
+    <h2>Scaling issues</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/bad_data_vis/area_size.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-52" style="background:;">
+  <hgroup>
+    <h2>Poor binning choices</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/bad_data_vis/poor_binning.png width = 900 height = 500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-53" style="background:;">
+  <hgroup>
+    <h2>Some general advice</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Consider the purpose of the plot. 
+
+<ul>
+<li>Relation? Scatterplots </li>
+<li>Distribution? Histogram or density plot</li>
+<li>Trend? Line plot, scatterplot with smoother, etc.</li>
+</ul></li>
+<li>How many variables? What type?
+
+<ul>
+<li>One continuous variable: histogram, density plot, or similar</li>
+<li>Two continuous: Scatterplot (if you have lots of data, consider binning)</li>
+<li>One categorical one continuous: boxplots, violin plots, bar plots</li>
+<li>Two categorical variable? Mosaic plot</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-54" style="background:;">
+  <hgroup>
+    <h2>One continuous variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Histogram</h1>
+
+<p><img src="assets/fig/hist-1.png" alt="plot of chunk hist"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-55" style="background:;">
+  <hgroup>
+    <h2>One continuous variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Density plot</h1>
+
+<p><img src="assets/fig/density-1.png" alt="plot of chunk density"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-56" style="background:;">
+  <hgroup>
+    <h2>One continuous variable</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Frequency polygon</h1>
+
+<p><img src="assets/fig/freqpoly-1.png" alt="plot of chunk freqpoly"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-57" style="background:;">
+  <hgroup>
+    <h2>Consider overlays</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/overlay-1.png" alt="plot of chunk overlay"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-58" style="background:;">
+  <hgroup>
+    <h2>Two continuous variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Scatterplot</h1>
+
+<p><img src="assets/fig/scatter-1.png" alt="plot of chunk scatter"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-59" style="background:;">
+  <hgroup>
+    <h2>Trend</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Line plot (often with date or time on x-axis)</h1>
+
+<p><img src="assets/fig/trend-1.png" alt="plot of chunk trend"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-60" style="background:;">
+  <hgroup>
+    <h2>Trend w/smoother</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/trend_smooth-1.png" alt="plot of chunk trend_smooth"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-61" style="background:;">
+  <hgroup>
+    <h2>Categorical &amp; Continuous</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Violin plots</h1>
+
+<p><img src="assets/fig/violin_plot-1.png" alt="plot of chunk violin_plot"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-62" style="background:;">
+  <hgroup>
+    <h2>Overlay data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/violin_plot_data-1.png" alt="plot of chunk violin_plot_data"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-63" style="background:;">
+  <hgroup>
+    <h2>Two categorical variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Mosaic plot</h1>
+
+<p><img src="assets/fig/mosaic_plot-1.png" alt="plot of chunk mosaic_plot"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-64" style="background:;">
+  <hgroup>
+    <h2>Don&#39;t end up in a blog for wrong reasons</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="https://flowingdata.com/2010/05/14/wait-something-isnt-right-here/">https://flowingdata.com/2010/05/14/wait-something-isnt-right-here/</a></li>
+<li><a href="https://flowingdata.com/2009/11/26/fox-news-makes-the-best-pie-chart-ever/">https://flowingdata.com/2009/11/26/fox-news-makes-the-best-pie-chart-ever/</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-65" style="background:;">
+  <hgroup>
+    <h2>One more example</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "center">
+<img src = assets/img/bad_data_vis/pie_dishonest.png width = 700 height = 550>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-66" style="background:;">
+  <hgroup>
+    <h2>Conclusions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Essentially never
+
+<ul>
+<li>Use pie charts (use bar charts instead)</li>
+<li>Use dual axes (produce separate plots instead)</li>
+<li>Use 3D unnecessarily</li>
+<li>Add color for color&#39;s sake (this isn&#39;t sales)</li>
+</ul></li>
+<li>Rarely
+
+<ul>
+<li>Truncate axes</li>
+</ul></li>
+<li>Do
+
+<ul>
+<li>Show the data</li>
+<li>Be as clear as possible</li>
+<li>Let the data tell the story</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-67" style="background:;">
+  <hgroup>
+    <h2>Last pitch</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Plotting your data can often lead to surprises. </li>
+<li>Good data visualization can <a href="http://www.tandfonline.com/doi/abs/10.1080/01621459.2013.808157">often</a> be just as powerful for inference as complex modeling.</li>
+<li>Ideally, use it for more than just communicating what you already know! (I want to help build tools to make it easier for you to do so)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Mean versus median versus mode'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Mean versus median versus mode'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Standard deviation'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Standard deviation'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Correlation'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Classical example: Anscombe&#39;s Quartet'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='In visual form'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Better example'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Plot one of the datasets'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Plot another dataset'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Plot all the datasets'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='In gif form'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Some applied examples'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Hypothetical example'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Barplots'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Boxplots'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Notched boxplots'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Stripcharts'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Jittered stripcharts'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Combine barplots and jittered stripcharts'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Combine boxplots and jittered stripcharts'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Best?'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Some things to avoid'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Examples'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Examples'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Examples'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Examples'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Examples'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Examples'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Examples'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Examples'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Examples'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Examples'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Some great examples: SEDA'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Means by district'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Average gains by district'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Mean scores and SES'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Mean scores and SES by Race/Ethniciy'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Other examples: Visualizing scale'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Some <em>ggplot</em> examples'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Add an additional aesthetic'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Add smooth line for each class'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Remove SE'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Some things to avoid'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Truncated axes'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='NA'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='NA'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Dual axes'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Scaling issues'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='Poor binning choices'>
+         52
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=53 title='Some general advice'>
+         53
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=54 title='One continuous variable'>
+         54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='One continuous variable'>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='One continuous variable'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='Consider overlays'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='Two continuous variables'>
+         58
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=59 title='Trend'>
+         59
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=60 title='Trend w/smoother'>
+         60
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=61 title='Categorical &amp; Continuous'>
+         61
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=62 title='Overlay data'>
+         62
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=63 title='Two categorical variables'>
+         63
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=64 title='Don&#39;t end up in a blog for wrong reasons'>
+         64
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=65 title='One more example'>
+         65
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=66 title='Conclusions'>
+         66
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=67 title='Last pitch'>
+         67
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

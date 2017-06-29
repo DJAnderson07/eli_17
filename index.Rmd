@@ -1,0 +1,812 @@
+---
+title       : "Introduction to Data Visualization"
+subtitle    : Some dos and don'ts"
+author      : Daniel Anderson
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : zenburn      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+--- 
+<style>
+em {
+  font-style: italic
+}
+</style>
+
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = "/Users/Daniel/Teaching/eli_17/")
+opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+## Quick stats lesson (with pictures!)
+* Mean versus Median versus Mode
+* Standard Deviation
+* Correlation
+
+----
+## Mean versus median versus mode
+
+```{r normal_dist, echo = FALSE, fig.width = 13}
+colors <- esvis::col_hue(3)
+
+x_norm <- rnorm(1e4, 50, 10)
+dens_norm <- density(x_norm, bw = 10)
+plot(dens_norm, 
+	xlim = c(0, 100), 
+	main = "", 
+	xlab = "Scores", 
+	ylab = "", 
+	bty = "n")
+abline(v = mean(x_norm), col = colors[1], lwd = 7)
+abline(v = median(x_norm), col = colors[3], lwd = 4)
+abline(v = dens_norm$x[which.max(dens_norm$y)], col = colors[2], lwd = 2)
+legend("topright", 
+		lwd = 2, 
+		col = colors,
+		legend = c("mean", "median", "mode"),
+		box.lwd = 0)
+```
+
+----
+## Mean versus median versus mode
+
+```{r bimod, echo = FALSE, fig.width = 13}
+x_bimod <- c(rpois(100, 5), rnorm(100, 50, 10))
+dens_bimod <- density(x_bimod, bw = 10)
+
+plot(dens_bimod, 
+		xlim = c(0, 100), 
+		main = "", 
+		xlab = "Scores", 
+		ylab = "", 
+		bty = "n")
+abline(v = mean(x_bimod), col = colors[1], lwd = 2)
+abline(v = median(x_bimod), col = colors[2], lwd = 2)
+abline(v = dens_bimod$x[which.max(dens_bimod$y)], col = colors[3], lwd = 2)
+legend("topright", 
+		lwd = 2, 
+		col = colors,
+		legend = c("mean", "median", "mode"),
+		box.lwd = 0)
+```
+
+----
+## Standard deviation
+
+<div align = "center">
+<img src = assets/img/sd_norm.png width = 1000 height = 500>
+</div>
+
+----
+## Standard deviation
+
+```{r sd_bimod, echo = FALSE, fig.width = 13}
+plot(dens_bimod, 
+	xlim = c(0, 100), 
+	main = "", 
+	xlab = "Scores", 
+	ylab = "",
+	bty = "n")
+sd_bimod <- sd(x_bimod)
+abline(v = mean(x_bimod), col = colors[1], lwd = 2)
+
+one_sd_y <- dens_bimod$y[dens_bimod$x >= mean(x_bimod) - sd_bimod &
+					   dens_bimod$x <= mean(x_bimod) + sd_bimod]
+one_sd_x <- seq(mean(x_bimod) - sd_bimod, 
+				mean(x_bimod) + sd_bimod,
+				length = length(one_sd_y))
+	
+polygon(c(one_sd_x[1], one_sd_x, one_sd_x[length(one_sd_x)]),
+		c(0, one_sd_y, 0),
+		col = rgb(0, 0.2, 0.4, 0.1),
+		border = FALSE)
+text(40, 0.0025, paste0("1 SD: ", 
+					length(one_sd_x) /length(x_bimod), 
+					"%"))
+
+```
+
+----
+## Correlation
+
+```{r echo = FALSE, fig.width = 13}
+n_obs <- 100
+means <- c(100, 50)
+error_cv1 <- matrix(c(100, 1, 
+					  1, 50), byrow = TRUE, ncol = 2)
+error_cv2 <- matrix(c(100, 20, 
+					  20, 50), byrow = TRUE, ncol = 2)
+error_cv3 <- matrix(c(100, 35, 
+					  35, 50), byrow = TRUE, ncol = 2)
+error_cv4 <- matrix(c(100, 50, 
+					  50, 50), byrow = TRUE, ncol = 2)
+error_cv5 <- matrix(c(100, 65, 
+					  65, 50), byrow = TRUE, ncol = 2)
+error_cv6 <- matrix(c(100, 70, 
+					  70, 50), byrow = TRUE, ncol = 2)
+
+library(MASS)
+set.seed(42)
+sim1 <- mvrnorm(n = n_obs, mu = means, Sigma = error_cv1)
+sim2 <- mvrnorm(n = n_obs, mu = means, Sigma = error_cv2)
+sim3 <- mvrnorm(n = n_obs, mu = means, Sigma = error_cv3)
+sim4 <- mvrnorm(n = n_obs, mu = means, Sigma = error_cv4)
+sim5 <- mvrnorm(n = n_obs, mu = means, Sigma = error_cv5)
+sim6 <- mvrnorm(n = n_obs, mu = means, Sigma = error_cv6)
+
+
+par(mfrow=c(2, 3), mar = c(2, 3, 3, 2), bty = "n")
+plot(sim1,
+	xlab = "",
+	ylab = "",
+	main = paste0("Corr: ", round(cor(sim1)[2, 1], 2)),
+	cex.main = 3)
+plot(sim2,
+	xlab = "",
+	ylab = "",
+	main = paste0("Corr: ", round(cor(sim2)[2, 1], 2)),
+	cex.main = 3)
+plot(sim3,
+	xlab = "",
+	ylab = "",
+	main = paste0("Corr: ", round(cor(sim3)[2, 1], 2)),
+	cex.main = 3)
+plot(sim4,
+	xlab = "",
+	ylab = "",
+	main = paste0("Corr: ", round(cor(sim4)[2, 1], 2)),
+	cex.main = 3)
+plot(sim5,
+	xlab = "",
+	ylab = "",
+	main = paste0("Corr: ", round(cor(sim5)[2, 1], 2)),
+	cex.main = 3)
+plot(sim6,
+	xlab = "",
+	ylab = "",
+	main = paste0("Corr: ", round(cor(sim6)[2, 1], 2)),
+	cex.main = 3)
+```
+
+
+---- .quote
+
+<q> Above all else, show the data
+
+<br>
+Edward Tufte
+
+----
+## Classical example: Anscombe's Quartet
+
+```{r anscombe_plot, echo = FALSE, message = FALSE, warning = FALSE}
+library(datasauRus)
+library(tidyverse)
+long <- anscombe %>% 
+	gather(var, val) %>% 
+	separate(var, c("axis", "plot"), 1) 
+splt <- split(long, long$axis)
+splt <- lapply(splt, "[", -1)
+anscombe <- as.data.frame(cbind(splt[[1]], splt[[2]][ ,-1]))
+names(anscombe)[-1] <- c("x", "y")
+
+anscombe %>% 
+	group_by(plot) %>% 
+	summarize(mean_x = mean(x),
+			  mean_y = mean(y),
+			  sd_x = sd(x),
+			  sd_y = sd(y),
+			  cor = cor(x, y)) %>% 
+	knitr::kable()
+```
+
+----
+## In visual form
+
+```{r anscombe_stats, fig.width = 13} 
+theme_set(theme_bw())
+ggplot(anscombe, aes(x, y)) +
+	geom_point() +
+	geom_smooth(method = "lm", se = FALSE) +
+	facet_wrap(~plot)
+```
+
+----
+## Better example
+
+```{r datasaurus_dozen_stats}
+datasaurus_dozen %>% 
+  group_by(dataset) %>% 
+  summarize(mean_x = mean(x),
+            mean_y = mean(y),
+            sd_x = sd(x),
+            sd_y = sd(y),
+            cor = cor(x, y)) %>% 
+  knitr::kable()
+```
+
+----
+## Plot one of the datasets
+
+```{r echo = FALSE, fig.width = 13}
+ggplot(filter(datasaurus_dozen, dataset == "dino"), aes(x, y)) +
+  geom_point() 
+```
+
+----
+## Plot another dataset
+
+```{r echo = FALSE, fig.width = 13}
+ggplot(filter(datasaurus_dozen, dataset == "star"), aes(x, y)) +
+  geom_point() 
+```
+
+----
+## Plot all the datasets
+
+```{r echo = FALSE, fig.width = 13}
+ggplot(datasaurus_dozen, aes(x, y)) +
+  geom_point() +
+  facet_wrap(~dataset)
+```
+
+----
+## In gif form
+
+![dino_gif](https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif)
+
+Matejka & Fitzmaurice (2017). *Same stats, different graphs: Generating datasets with varied appearance and identical statistics through simulated annealing.*
+
+---- .segue
+# Some applied examples 
+
+----
+## Hypothetical example
+* School wants to try out a new reading intervention
+* Work with researchers at the UO to design a study
+* Kindergarten students who are behind their peers in literacy are selected
+* Randomly assign half the students to the intervention, the rest continue with
+  "typical" instruction
+* Now the study is over - how do we tell if it worked? Visualize it! (and 
+  other stuff too)
+
+----
+## Barplots
+(tried and true)
+
+```{r barplot, echo = FALSE, fig.width = 12, fig.height = 7}
+set.seed(110)
+d <- data.frame(treatment = rnorm(20, 100, 4),
+				control = rnorm(20, 95, 4))
+library(tidyverse)
+td <- gather(d, condition, score)
+# write.csv(td, "/Users/Daniel/Dropbox/Teaching/ev_base_DM/data/plot_data.csv",
+#		row.names = FALSE)
+td$condition <- as.factor(td$condition)
+td$condition_n <- as.numeric(td$condition)
+
+with(td, plot(condition_n, score, 
+	type = "n", 
+	bty = "n",
+	main = "",
+	xaxt = "n",
+	xlab = "Condition",
+	ylab = "Score",
+	xlim = c(0.75, 2.25)))
+axis(1, 0:3, c("", "Control", "Treatment", ""))
+rect(c(0.95, 1.95), 0, c(0.95, 1.95) + .1, rev(apply(d, 2, mean)))
+```
+
+-----
+## Boxplots
+(tried and true)
+
+```{r boxplots, echo = FALSE, fig.width = 12, fig.height = 7}
+
+par(bty = "n")
+plot(score ~ condition, data = td)
+```
+
+----
+## Notched boxplots
+(slightly better)
+
+```{r notched_boxplots, echo = FALSE, fig.width = 12, fig.height = 7}
+par(bty = "n")
+plot(score ~ condition, data = td, notch = TRUE)
+```
+
+----
+## Stripcharts
+Show the data!
+
+```{r stripchart, echo = FALSE, fig.width = 12, fig.height = 7}
+par(bty = "n")
+plot(score ~ condition_n, data = td, 
+	type = "p",
+	xaxt = "n",
+	xlim = c(0.75, 2.25))
+axis(1, 0:3, c("", "Control", "Treatment", ""))
+```
+
+----
+## Jittered stripcharts
+Show the data!
+
+```{r jittered_stripchart, echo = FALSE, fig.width = 12, fig.height = 7}
+td$condition_j <- jitter(td$condition_n, amount = .1)
+with(td, plot(condition_j, score, 
+	type = "p", 
+	bty = "n",
+	main = "",
+	xaxt = "n",
+	xlab = "Condition",
+	ylab = "Score",
+	xlim = c(0.75, 2.25)))
+axis(1, at = 0:3, labels = c("", "Control", "Treatment", ""))
+
+```
+
+---
+## Combine barplots and jittered stripcharts
+
+```{r barplot_stripchart, echo = FALSE, fig.width = 12, fig.height = 8}
+with(td, plot(condition_n, score, 
+	type = "n", 
+	bty = "n",
+	main = "",
+	xaxt = "n",
+	xlab = "Condition",
+	ylab = "Score",
+	xlim = c(0.75, 2.25)))
+axis(1, 0:3, c("", "Control", "Treatment", ""))
+rect(c(0.95, 1.95), 0, c(0.95, 1.95) + .1, rev(apply(d, 2, mean)))
+points(td$condition_j, td$score)
+```
+
+----
+## Combine boxplots and jittered stripcharts
+
+```{r boxplot_jitter, echo = FALSE, fig.width = 12, fig.height = 8}
+par(bty = "n")
+with(td, plot(condition, score, notch = TRUE))
+points(td$condition_j, td$score)
+```
+
+----
+## Best?
+
+```{r broman_plot, echo = FALSE, fig.width = 12, fig.height = 8}
+with(td, plot(condition_j, score, 
+	type = "p", 
+	bty = "n",
+	main = "",
+	xaxt = "n",
+	xlab = "Condition",
+	ylab = "Score",
+	xlim = c(0.75, 2.25)))
+axis(1, at = 0:3, labels = c("", "Control", "Treatment", ""))
+
+
+summary <- td %>% 
+	group_by(condition) %>% 
+	summarize(mean = mean(score),
+			  se = sundry::se(score))
+
+
+
+low_y_cntrl <- summary$mean[1] - 2*summary$se[1]
+low_y_trt <- summary$mean[2] - 2*summary$se[2]
+high_y_cntrl <- summary$mean[1] + 2*summary$se[1]
+high_y_trt <- summary$mean[2] + 2*summary$se[2]
+
+segments(x0 = c(1.2, 1.8), x1 = c(1.2, 1.8), 
+		 y0 = c(low_y_cntrl, low_y_trt),
+		 y1 = c(high_y_cntrl, high_y_trt), 
+		 lwd = 2)
+segments(x0 = rep(c(1.2, 1.8), each = 2) - .025,
+		 x1 = rep(c(1.2, 1.8), each = 2) + .025,
+		 y0 = c(low_y_cntrl, high_y_cntrl, low_y_trt, high_y_trt),
+		 y1 = c(low_y_cntrl, high_y_cntrl, low_y_trt, high_y_trt),
+		 lwd = 2)
+points(c(1.2, 1.8), summary$mean, cex = 1.5, pch = 22, bg = "white")
+```
+
+----
+## Some things to avoid
+
+* 3D plots
+* Pie charts
+* Dual axes
+* Restricted axes
+* Unnecessary frills (colors, etc)
+	+ Show the data as plainly as possible. Let the data speak!
+
+NOTE: The following 10 slides (and the previous plot) inspired/taken from Karl Broman's presentation on graphs (see [here](https://www.biostat.wisc.edu/~kbroman/presentations/graphs2017.pdf))
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/3d_bar.png width = 500 height = 500>
+</div>
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/tube_bar.png width = 500 height = 500>
+</div>
+
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/cone_bar.png width = 500 height = 500>
+</div>
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/orbs.png width = 500 height = 500>
+</div>
+
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/pie.png width = 500 height = 500>
+</div>
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/exploded_pie.png width = 500 height = 500>
+</div>
+
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/donut.png width = 500 height = 500>
+</div>
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/area.png width = 500 height = 500>
+</div>
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/double_terrain.png width = 500 height = 500>
+</div>
+
+--- &twocol
+## Examples
+
+*** =left
+
+<div align = "center">
+<img src = assets/img/broman_plot.png width = 500 height = 500>
+</div>
+
+*** =right
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/terrain.png width = 500 height = 500>
+</div>
+
+----
+## Some great examples: SEDA
+Sean Reardon: https://cepa.stanford.edu/seda/overview
+
+<div align = "center">
+<img src = assets/img/seda.png width = 800 height = 600>
+</div>
+
+----
+## Means by district
+<div align = "center">
+<img src = assets/img/seda_means.png width = 900 height = 500>
+</div>
+
+----
+## Average gains by district
+<div align = "center">
+<img src = assets/img/seda_growth.png width = 900 height = 500>
+</div>
+
+----
+## Mean scores and SES
+<div align = "center">
+<img src = assets/img/seda_ses.png width = 900 height = 500>
+</div>
+
+----
+## Mean scores and SES by Race/Ethniciy
+<div align = "center">
+<img src = assets/img/seda_ses_race.png width = 900 height = 500>
+</div>
+
+---
+## Other examples: Visualizing scale
+* Space stuff: http://imgur.com/a/lGabv
+<br>
+* Time: https://www.businessinsider.com.au/animated-timeline-earth-history-2015-11
+
+----
+## Some *ggplot* examples
+
+```{r mpgEx3, echo = FALSE, warning = FALSE, message = FALSE, fig.width = 12, fig.height = 8}
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point() + geom_smooth()
+```
+
+----
+## Add an additional aesthetic
+
+```{r mpgEx4, echo = FALSE, fig.width = 12, fig.height = 8}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) + geom_point() 
+```
+
+----
+## Add smooth line for each class
+# Too busy
+
+```{r mpgEx5b, fig.height = 8, fig.width = 12, echo = FALSE, warning = FALSE, message = FALSE}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) + geom_point() +
+ geom_smooth()
+```
+
+----
+## Remove SE
+
+```{r mpgEx6a, echo = FALSE, fig.height = 8, fig.width = 12, warning = FALSE, message = FALSE}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) + geom_point() +
+ geom_smooth(se = FALSE)
+```
+
+---- .segue
+# Some things to avoid
+
+----
+## Truncated axes
+<div align = "center">
+<img src = assets/img/bad_data_vis/truncated_axes.png width = 900 height = 500>
+</div>
+
+----
+<div align = "center">
+<img src = assets/img/bad_data_vis/truncated_axes2.png width = 900 height = 500>
+</div>
+
+----
+<div align = "center">
+<img src = assets/img/bad_data_vis/truncated_dishonest.png width = 700 height = 650>
+</div>
+
+
+----
+## Dual axes
+<div align = "center">
+<img src = assets/img/bad_data_vis/dual_axes.png width = 800 height = 500>
+</div>
+
+[Proof](http://www.tylervigen.com/spurious-correlations) dual axes are bad. But, some [lively](https://stackoverflow.com/questions/3099219/plot-with-2-y-axes-one-y-axis-on-the-left-and-another-y-axis-on-the-right) discussion. 
+
+----
+## Scaling issues
+<div align = "center">
+<img src = assets/img/bad_data_vis/area_size.png width = 900 height = 500>
+</div>
+
+----
+## Poor binning choices
+<div align = "center">
+<img src = assets/img/bad_data_vis/poor_binning.png width = 900 height = 500>
+</div>
+
+----
+## Some general advice
+* Consider the purpose of the plot. 
+	+ Relation? Scatterplots 
+	+ Distribution? Histogram or density plot
+	+ Trend? Line plot, scatterplot with smoother, etc.
+* How many variables? What type?
+	+ One continuous variable: histogram, density plot, or similar
+	+ Two continuous: Scatterplot (if you have lots of data, consider binning)
+	+ One categorical one continuous: boxplots, violin plots, bar plots
+	+ Two categorical variable? Mosaic plot
+
+----
+## One continuous variable
+# Histogram
+```{r hist, echo = FALSE, fig.height = 7, fig.width = 12, message = FALSE}
+ggplot(mpg, aes(hwy)) + geom_histogram()
+```
+
+----
+## One continuous variable
+# Density plot
+```{r density, echo = FALSE, fig.height = 7, fig.width = 12, message = FALSE}
+ggplot(mpg, aes(hwy)) + geom_density()
+```
+
+----
+## One continuous variable
+# Frequency polygon
+```{r freqpoly, echo = FALSE, fig.height = 7, fig.width = 12, message = FALSE}
+ggplot(mpg, aes(hwy)) + geom_freqpoly()
+```
+
+----
+## Consider overlays
+```{r overlay, echo = FALSE, fig.height = 8, fig.width = 12, message = FALSE}
+ggplot(mpg, aes(hwy)) + geom_histogram(aes(y = ..density..)) + geom_density(col = "blue")
+```
+
+----
+## Two continuous variables
+# Scatterplot
+
+```{r scatter, echo = FALSE, fig.height = 7, fig.width = 12}
+ggplot(diamonds, aes(carat, price)) + geom_point()
+```
+
+----
+## Trend
+# Line plot (often with date or time on x-axis)
+```{r trend, echo = FALSE, fig.height = 7, fig.width = 12}
+ggplot(economics, aes(date, unemploy)) + geom_line()
+```
+
+----
+## Trend w/smoother
+
+```{r trend_smooth, echo = FALSE, fig.height = 7, fig.width = 12, message = FALSE}
+ggplot(economics, aes(date, unemploy)) + geom_line() + geom_smooth()
+```
+
+---
+## Categorical & Continuous
+# Violin plots
+
+```{r violin_plot, echo = FALSE, fig.height = 7, fig.width = 12}
+ggplot(mpg, aes(class, hwy)) + geom_violin()
+```
+
+---
+## Overlay data
+
+```{r violin_plot_data, echo = FALSE, fig.height = 8, fig.width = 12}
+ggplot(mpg, aes(class, hwy)) + geom_violin() + geom_jitter(height = 0, width = 0.2)
+```
+
+---
+## Two categorical variables
+# Mosaic plot
+```{r mosaic_plot, echo = FALSE, fig.height = 7, fig.width = 12}
+mosaicplot(UCBAdmissions, sort = 3:1,
+      col = hcl(c(120, 10)),
+      main = "Student admissions at UC Berkeley")
+```
+
+----
+## Don't end up in a blog for wrong reasons
+* https://flowingdata.com/2010/05/14/wait-something-isnt-right-here/
+* https://flowingdata.com/2009/11/26/fox-news-makes-the-best-pie-chart-ever/
+
+----
+## One more example
+
+<div align = "center">
+<img src = assets/img/bad_data_vis/pie_dishonest.png width = 700 height = 550>
+</div>
+
+----
+## Conclusions
+* Essentially never
+	+ Use pie charts (use bar charts instead)
+	+ Use dual axes (produce separate plots instead)
+	+ Use 3D unnecessarily
+	+ Add color for color's sake (this isn't sales)
+* Rarely
+	+ Truncate axes
+* Do
+	+ Show the data
+	+ Be as clear as possible
+	+ Let the data tell the story
+
+----
+## Last pitch
+* Plotting your data can often lead to surprises. 
+* Good data visualization can [often](http://www.tandfonline.com/doi/abs/10.1080/01621459.2013.808157) be just as powerful for inference as complex modeling.
+* Ideally, use it for more than just communicating what you already know! (I want to help build tools to make it easier for you to do so)
